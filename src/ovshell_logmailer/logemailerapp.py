@@ -16,7 +16,9 @@ DEFAULT_EMAIL_CONFIG = {
     "SMTPPASS": "yourpassword",
     "USETLS": "True",
     "SENDER": "sender@yourdomain.com",
-    "EMAILS": "alice@example.com,bob@example.com"
+    "EMAILS": "alice@example.com,bob@example.com",
+    "EMAILTITLE": "Your flight {FILENAME}",
+    "EMAILBODY": "Open Vario sent you this log file: {FILENAME}.<br>You can find it attached to this e-mail."
 }
 
 
@@ -326,7 +328,7 @@ class LogEmailerActivity(api.Activity):
         self.mailer.send_email_with_attachment(
             sender = sender, 
             recipient = recipient, 
-            subject = f"Your flight {fileinfo.name}",
-            body = "Here is your flight",
+            subject = self.email_config["EMAILTITLE"].format(FILENAME=fileinfo.name),
+            body = self.email_config["EMAILBODY"].format(FILENAME=fileinfo.name),
             attachment_path = filepath
         )

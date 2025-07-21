@@ -23,6 +23,25 @@ run this command:
 wget https://raw.githubusercontent.com/kedder/openvario-shell/master/scripts/openvario-shell-uninstall.sh -O - | sh
 ```
 
+On first run, logmailer will create a configuration file in your home folder: `~/ovshell-logmailer.conf`
+It will look like this:
+
+```
+SMTPHOST=smtp.example.com
+SMTPPORT=587
+SMTPUSER=yourusername
+SMTPPASS=yourpassword
+USETLS=True
+SENDER=ender@yourdomain.com
+EMAILS=alice@example.com,bob@example.com
+EMAILTITLE=Your flight {FILENAME}
+EMAILBODY=Open Vario sent you this log file: {FILENAME}.<br>You can find it attached to this e-mail.
+```
+
+You can modify this to match your e-mail configuration.
+
+As seen in the example, you can specify the {FILENAME} placeholder, which will fill in the log filename in the mail text.
+
 ## Development
 
 ### Setting up the development environment
