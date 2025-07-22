@@ -4,6 +4,9 @@ This is an extension for the Open Vario Shell by kedder (https://github.com/kedd
 
 Log Mailer adds a menu option through which you can select an IGC log file, and mail to one or more recipients. The OpenVario will require internet access (e.g. Wi-Fi through a mobile hotspot).
 
+<img width="1437" height="680" alt="image" src="https://github.com/user-attachments/assets/a1d62206-4a64-4e60-9f4c-b76f638b3b68" />
+
+
 ## Installation
 
 You need to install OVShell from kedder first: 
