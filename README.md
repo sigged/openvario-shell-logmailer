@@ -6,22 +6,19 @@ Log Mailer adds a menu option through which you can select an IGC log file, and 
 
 ## Installation
 
-The easiest way to install is using `opkg` package manager on
-internet-connected Openvario device.
+You need to install OVShell from kedder first: 
+https://github.com/kedder/openvario-shell 
 
-```sh
-wget https://raw.githubusercontent.com/kedder/openvario-shell/master/scripts/openvario-shell-install.sh -O - | sh
+ 
+
 ```
 
-After executing this command, `ovshell` command should be available. It will
-start automatically next time Openvario boots up.
+WIP: information on best way to install extensions for kedder's ovshell
+Any tips are welcome!
 
-In case you didn't like it and would like to return to stock Openvario menu,
-run this command:
-
-```sh
-wget https://raw.githubusercontent.com/kedder/openvario-shell/master/scripts/openvario-shell-uninstall.sh -O - | sh
 ```
+
+ 
 
 On first run, logmailer will create a configuration file in your home folder: `~/ovshell-logmailer.conf`
 It will look like this:
@@ -46,7 +43,7 @@ As seen in the example, you can specify the {FILENAME} placeholder, which will f
 
 ### Setting up the development environment
 
-The `logmailer` extension uses `pipenv` to create a dev environment so it can run alongside the main `ovshell` application. 
+To further develop the `logmailer` extension you can use `pipenv` to create a dev environment so it can run alongside the main `ovshell` application. 
 
 To set this up yourself, do this in a linux/WSL shell:
 
