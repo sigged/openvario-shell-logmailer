@@ -201,8 +201,8 @@ class LogEmailerActivity(api.Activity):
         sender = self.email_config["SENDER"]
 
         # --- OK and Cancel buttons at the bottom ---
-        ok_btn = urwid.Button("Send", align='center')
-        cancel_btn = urwid.Button("Cancel", align='center')
+        ok_btn = urwid.Button("Send")
+        cancel_btn = urwid.Button("Cancel")
 
         # Button handlers
         def close_dialog(button):
