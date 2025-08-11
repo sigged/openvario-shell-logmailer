@@ -12,16 +12,39 @@ Log Mailer adds a menu option through which you can select an IGC log file, and 
 You need to install OVShell from kedder first: 
 https://github.com/kedder/openvario-shell 
 
- 
+1. Ensure pip is installed on your OpenVario
+```
+opkg update
+opkg install python3-pip
+```
+2. Test with pip3 --version
+If you get an error "colorsys" not found, install missing dependencies:
+```
+opkg install python3-modules
+```
+3. Install the extension package
+```
+pip3 install https://github.com/sigged/openvario-shell-logmailer/archive/refs/heads/main.zip
+```
+4. Verify the presence of the extension in /usr/lib/python3.10/site-packages/
+You should see folder named `openvario_shell_logmailer-x.x.x-py3.10.egg-info`
+and alongside it a folder named `ovshell_logmailer`.
+
+If the latter is missing you can manually download the zip and extract it to site_pacakges:
+```
+cd ~/
+wget https://github.com/sigged/openvario-shell-logmailer/archive/refs/heads/main.zip -O logmailer.zip
+
+unzip logmailer.zip
+# This creates a directory like openvario-shell-logmailer-main/
+
+cd openvario-shell-logmailer-main
+pip3 install .  # if not already done
+
+cp -r openvario-shell-logmailer-main/src/ovshell_logmailer \
+    /usr/lib/python3.10/site-packages/
 
 ```
-
-WIP: information on best way to install extensions for kedder's ovshell
-Any tips are welcome!
-
-```
-
- 
 
 On first run, logmailer will create a configuration file in your home folder: `~/ovshell-logmailer.conf`
 It will look like this:
