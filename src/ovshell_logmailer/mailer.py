@@ -4,6 +4,12 @@ import mimetypes
 from email.message import EmailMessage
 from .api import Mailer
 
+# Seconds to wait for the mail server before giving up. Without a timeout, a
+# server or connection that stops responding freezes the menu indefinitely.
+# Sending the whole message (with the log attached) must also finish within
+# this time, so it is long enough for a big log over a slow phone hotspot.
+SMTP_TIMEOUT = 120
+
 class SmtpMailer(Mailer):
     def __init__(self, smtp_host, smtp_port, smtp_user, smtp_pass, use_tls):
         self.smtp_host = smtp_host
@@ -31,10 +37,10 @@ class SmtpMailer(Mailer):
                                filename=attachment_path.split('/')[-1])
 
             if self.use_tls:
-                server = smtplib.SMTP(self.smtp_host, self.smtp_port)
+                server = smtplib.SMTP(self.smtp_host, self.smtp_port, timeout=SMTP_TIMEOUT)
                 server.starttls()
             else:
-                server = smtplib.SMTP_SSL(self.smtp_host, self.smtp_port)
+                server = smtplib.SMTP_SSL(self.smtp_host, self.smtp_port, timeout=SMTP_TIMEOUT)
                 
             server.login(self.smtp_user, self.smtp_pass)
             server.send_message(msg)
